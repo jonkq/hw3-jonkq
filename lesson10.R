@@ -29,8 +29,6 @@ m_arima <- auto.arima(swiss_gdp)
 #' differentiation, what are the seasonal and non-seasonal AR and MA orders?
 #'
 m_arima
-
-
 seas(swiss_gdp)
 
 
