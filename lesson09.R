@@ -10,7 +10,8 @@
 #' before, we will enhance the dataset by defining two new variables,
 #' `student_teacher_ratio`, the student-teacher ratio, and `test_score`, an
 #' average of two underlying test scores:
-
+library(dplyr)
+library(ggplot2)
 library(AER)
 data(CASchools)
 
