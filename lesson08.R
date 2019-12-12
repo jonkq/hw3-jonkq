@@ -39,6 +39,8 @@ flights_wide <- flights %>%
   left_join(airports) %>%
   select(colnames(flights), lat, lon, manufacturer, model, seats, temp, humid)
 
+flights_wide
+
 #'
 #'
 #' 2. Joins: Filtering
