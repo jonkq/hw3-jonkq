@@ -43,6 +43,8 @@ base_arima
 #'
 m_arima_adj <- auto.arima(swiss_gdp, seasonal = F)
 
+m_arima_adj
+m_arima
 
 #' 5. Download your stock title of choice. Use prophet to forecast the series.
 #'
