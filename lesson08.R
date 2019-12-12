@@ -6,6 +6,7 @@
 #' to make it easier to find the pretty version.
 library(dplyr)
 library(nycflights13)
+library(ggplot2)
 airlines <- airlines
 airports <- airports
 flights <- flights
@@ -55,17 +56,23 @@ flights_wide <- flights %>%
 #' flights %>%
 #'   left_join(airports, by = c("faa" = "dest"))
 #'
-#'
+flights_wide %>%
+  filter(!is.na(dest))
+
+
+
 #' 3. Joins: Application
 #'
 #' Show the number of flights per carrier and origin airport as a heat map.
 #'
-#' flights %>%
-#'   ...(...) %>%
-#'   ...(...) %>%
-#'   ggplot(aes(...)) +
-#'   geom_tile(stat = "bin2d")
-#'
+flights %>%
+  group_by(carrier) %>%
+  mutate(count = n()) %>%
+  ungroup() %>%
+  select(carrier, origin, count) %>%
+  ggplot(aes(x = origin, y = carrier, fill = count))+
+  geom_tile(stat = "bin2d")
+
 #' Instead of `stat = "bin2d"` you can also use a `count()` after `flights`.
 #'
 #'
