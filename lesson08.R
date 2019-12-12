@@ -4,7 +4,14 @@
 #' If you are done, 'knit' the document, commit and push to GitHub.
 #' You can use GitHub Pages if you like, add links to README.md
 #' to make it easier to find the pretty version.
-#'
+library(dplyr)
+library(nycflights13)
+airlines <- airlines
+airports <- airports
+flights <- flights
+planes <- planes
+weather <- weather
+
 #'
 #' 1. Joins: Flattening
 #'
@@ -23,6 +30,14 @@
 #' the purpose.
 #' Hint: Implement this as a sequence of `left_join()` operations.
 #' For `weather` use the `time_hour` column.
+#'
+flights_wide <- flights %>%
+  left_join(airlines) %>%
+  left_join(weather) %>%
+  left_join(planes) %>%
+  left_join(airports) %>%
+  select(colnames(flights), lat, lon, manufacturer, model, seats, temp, humid)
+
 #'
 #'
 #' 2. Joins: Filtering
